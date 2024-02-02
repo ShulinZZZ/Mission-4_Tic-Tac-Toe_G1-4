@@ -1,81 +1,82 @@
-﻿class Driver
-{ 
+﻿using System;
 
-static void Main()
+namespace Mission4_G1_4_Tic_Tac_Toe
 {
-    bool gameOver = false;
+    class Program
+    {
 
-    TicTacToes ttt = new TicTacToes();
-
-    // Welcome the user to the game
-    Console.WriteLine("Welcome to Tic-Tac-Toe!");
-
-    // Create a game board array to store the players’ choices
-    char[,] gameBoard = new char[3, 3];
-
-        do
+        static void Main()
         {
-            // Ask each player in turn for their choice
-            Console.WriteLine("Player O, make your selection");
-            string PlayerOPick = Console.ReadLine();
+            bool gameOver = false;
 
-            // Convert the player's input to row and column indices
+            TicTacToes ttt = new TicTacToes();
 
-            // Assuming the first character represents the row (1, 2, 3)
-            int rowO = int.Parse(PlayerOPick[0] - '1');
-            // The second character is the column (1, 2, 3)
-            int colO = int.Parse(PlayerOPick[1] - '1');
+            // Welcome the user to the game
+            Console.WriteLine("Welcome to Tic-Tac-Toe!");
 
-            // Update the game board array
-            gameBoard[rowO, colO] = 'O'; 
+            // Create a game board array to store the players’ choices
+            char[,] gameBoard = new char[3, 3];
 
-            // Check for a winner by calling the method in the supporting class,
-            // and notify the players when a win has occurred and which player won the game
-            TicTacToes winnerCheck = ttt.CheckWinner(gameBoard);
-
-            if (winnerCheck.win == 1)
+            do
             {
-                Console.WriteLine($"Player {winnerCheck.player} won!");
-                gameOver = true;
-            }
-            else if (winnerCheck.win == 2)
-            {
-                Console.WriteLine("Draw");
-                gameOver = true;
-            }
+                // Ask each player in turn for their choice
+                Console.WriteLine("Player O, make your selection");
+                string PlayerOPick = Console.ReadLine();
 
-            // Print the board by calling the method in the supporting class
-            ttt.PrintBoard(gameBoard);
+                // Convert the player's input to row and column indices
 
-            // Player X's turn
-            Console.WriteLine("Player X, make your selection");
-            string PlayerXPick = Console.ReadLine();
+                // Assuming the first character represents the row (1, 2, 3)
+                int rowO = int.Parse(PlayerOPick[0].ToString());
 
-            // Convert the player's input to row and column indices
+                // The second character is the column (1, 2, 3)
+                int colO = int.Parse(PlayerOPick[1].ToString());
 
-            // Assuming the first character represents the row (1, 2, 3)
-            int rowX = int.Parse(PlayerXPick[0] - '1');
-            // The second character is the column (1, 2, 3)
-            int colX = int.Parse(PlayerXPick[1] - '1');
-
-
-            // Update the game board array
-            gameBoard[rowX, colX] = 'X';
+                // Update the game board array
+                gameBoard[rowO, colO] = 'O';
 
                 // Check for a winner by calling the method in the supporting class,
                 // and notify the players when a win has occurred and which player won the game
-            char? winner = ttt.CheckWinner(gameBoard);
+                char? winnerResponse = ttt.CheckWinner(gameBoard);
 
-            if (winner.HasValue)
-            {
-                Console.WriteLine($"Player {winner} won!");
-                gameOver = true;
-            }
+                if (winnerResponse.HasValue)
+                {
+                    Console.WriteLine($"Player {winnerResponse} won!");
+                    gameOver = true;
+                }
 
-            // Print the board by calling the method in the supporting class
-            ttt.PrintBoard(gameBoard);
+                // Print the board by calling the method in the supporting class
+                ttt.PrintBoard(gameBoard);
 
-    } while (!gameOver);
-}
+                // Player X's turn
+                Console.WriteLine("Player X, make your selection");
+                string PlayerXPick = Console.ReadLine();
+
+                // Convert the player's input to row and column indices
+
+                // Assuming the first character represents the row (1, 2, 3)
+                int rowX = int.Parse(PlayerXPick[0].ToString());
+                // The second character is the column (1, 2, 3)
+                int colX = int.Parse(PlayerXPick[1].ToString());
+
+
+                // Update the game board array
+                gameBoard[rowX, colX] = 'X';
+
+                // Check for a winner by calling the method in the supporting class,
+                // and notify the players when a win has occurred and which player won the game
+                char? winner = ttt.CheckWinner(gameBoard);
+
+                if (winner.HasValue)
+                {
+                    Console.WriteLine($"Player {winner} won!");
+                    gameOver = true;
+                }
+
+                // Print the board by calling the method in the supporting class
+                ttt.PrintBoard(gameBoard);
+
+            } while (!gameOver);
+        }
+    }
 }
 
