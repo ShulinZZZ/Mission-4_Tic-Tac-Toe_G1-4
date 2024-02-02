@@ -10,10 +10,12 @@ namespace Mission4_G1_4_Tic_Tac_Toe
     internal class TicTacToes
     {
 
-        public void PrintBoard(char[,] game)
+        public void PrintBoard(char[,] gameBoard)
         {
+            /**
+             * dont need to create a game board becuase we are recieving it from the front end
             char[,] gameBoard;
-            gameBoard = new char[3, 3];
+           // gameBoard = new char[3, 3];
 
             for (int i = 0; i < 3; i++)
             {
@@ -22,7 +24,7 @@ namespace Mission4_G1_4_Tic_Tac_Toe
                     gameBoard[i, j] = ' ';
                 }
             }
-
+            */
             Console.WriteLine(" 0 1 2");
             for (int i = 0; i < 3; i++)
             {
@@ -35,7 +37,7 @@ namespace Mission4_G1_4_Tic_Tac_Toe
             }
         }
 
-        public char CheckWinner(char[,] gameBoard)
+        public char? CheckWinner(char[,] gameBoard)
         {
 
             // Check rows

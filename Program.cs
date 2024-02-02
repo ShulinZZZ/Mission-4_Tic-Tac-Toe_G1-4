@@ -45,7 +45,7 @@ static void Main()
         }
 
         // Print the board by calling the method in the supporting class
-        ttt.PrintBoard();
+        ttt.PrintBoard(gameBoard);
 
         // Player X's turn
         Console.WriteLine("Player X, make your selection");
@@ -61,23 +61,18 @@ static void Main()
         // Update the game board array
         gameBoard[row, col] = 'X';
 
-        // Check for a winner by calling the method in the supporting class,
-        // and notify the players when a win has occurred and which player won the game
-        winnerCheck = ttt.CheckWinner();
+            // Check for a winner by calling the method in the supporting class,
+            // and notify the players when a win has occurred and which player won the game
+        char? winner = ttt.CheckWinner(gameBoard);
 
-        if (winnerCheck.win == 1)
+        if (winner.HasValue)
         {
-            Console.WriteLine($"Player {winnerCheck.player} won!");
-            gameOver = true;
-        }
-        else if (winnerCheck.win == 2)
-        {
-            Console.WriteLine("Draw");
+            Console.WriteLine($"Player {winner} won!");
             gameOver = true;
         }
 
         // Print the board by calling the method in the supporting class
-        ttt.PrintBoard();
+        ttt.PrintBoard(gameBoard);
 
     } while (!gameOver);
 }
