@@ -31,7 +31,7 @@ static void Main()
 
         // Check for a winner by calling the method in the supporting class,
         // and notify the players when a win has occurred and which player won the game
-        WinnerInfo winnerCheck = ttt.CheckWinner();
+        WinnerInfo winnerCheck = ttt.CheckWinner(gameBoard);
 
         if (winnerCheck.win == 1)
         {
